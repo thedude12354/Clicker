@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Game extends Frame implements WindowListener,ActionListener{
     TextField text = new TextField(25);
     TextField error = new TextField(25);
-    JButton b;
+    Button b;
     Button c;
     Button d;
     Button e;
@@ -32,7 +32,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
         super(title);
         addWindowListener(this);
         ImageIcon Lev1Button = new ImageIcon("Level1Clicker.png");
-        b = new JButton(Lev1Button);
+        b = new Button("Click");
         c = new Button("Level 1 Clicker");
         d = new Button("Level 2 Clicker");
         e = new Button("Level 3 Clicker");
@@ -151,7 +151,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
-        if(e.getActionCommand() == "Click me"){
+        if(e.getActionCommand() == "Click"){
             numClicks++;
             text.setText("Button Clicked " + numClicks+ " times");
             error.setText("");
