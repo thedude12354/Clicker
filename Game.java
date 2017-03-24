@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
 import javax.swing.*;
+import java.text.DecimalFormat;
 public class Game extends Frame implements WindowListener,ActionListener{
     TextField text = new TextField(25);
     TextField error = new TextField(25);
@@ -24,7 +25,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
     int CPS = 0;
     public static void main(String[] args) {
         Game myWindow = new Game("Java Clicker Game by The Romano");
-        myWindow.setSize(700,200);
+        myWindow.setSize(700,700);
         myWindow.setVisible(true);
     }
 
@@ -79,6 +80,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
     }
 
     public class Lev1 implements Runnable {
+        DecimalFormat df = new DecimalFormat("#,###,###,###,###");
         public void run(){
             CPS = CPS + 1;
             Clicks.setText(CPS + " Clicks per second ");
@@ -86,7 +88,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
                 try{
                     Thread.sleep(1000);
                     numClicks++;
-                    text.setText("Button Clicked " + numClicks+ " times");
+                    text.setText("Button Clicked " + df.format(numClicks)+ " times");
                     labelC.setText("Clicker Costs: "+costC);
                 }
                 catch (InterruptedException w) {
@@ -97,6 +99,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
     }
 
     public class Lev2 implements Runnable {
+        DecimalFormat df = new DecimalFormat("#,###,###,###,###");
         public void run(){
             CPS = CPS + 3;
             Clicks.setText(CPS + " Clicks per second ");
@@ -104,7 +107,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
                 try{
                     Thread.sleep(1000);
                     numClicks = numClicks + 3;
-                    text.setText("Button Clicked " + numClicks+ " times");
+                    text.setText("Button Clicked " + df.format(numClicks)+ " times");
                     labelD.setText("Clicker Costs: "+costD);
                 }
                 catch (InterruptedException w) {
@@ -115,6 +118,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
     }
     
         public class Lev3 implements Runnable {
+        DecimalFormat df = new DecimalFormat("#,###,###,###,###");
         public void run(){
             CPS = CPS + 5;
             Clicks.setText(CPS + " Clicks per second ");
@@ -122,7 +126,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
                 try{
                     Thread.sleep(1000);
                     numClicks = numClicks + 5;
-                    text.setText("Button Clicked " + numClicks+ " times");
+                    text.setText("Button Clicked " + df.format(numClicks)+ " times");
                     labelE.setText("Clicker Costs: "+costE);
                 }
                 catch (InterruptedException w) {
@@ -133,6 +137,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
     }
     
         public class Lev4 implements Runnable {
+        DecimalFormat df = new DecimalFormat("#,###,###,###,###");
         public void run(){
             CPS = CPS + 10;
             Clicks.setText(CPS + " Clicks per second ");
@@ -140,7 +145,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
                 try{
                     Thread.sleep(1000);
                     numClicks = numClicks + 10;
-                    text.setText("Button Clicked " + numClicks+ " times");
+                    text.setText("Button Clicked " + df.format(numClicks)+ " times");
                     labelF.setText("Clicker Costs: "+costF);
                 }
                 catch (InterruptedException w) {
@@ -151,6 +156,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
+        DecimalFormat df = new DecimalFormat("#,###,###,###,###");
         if(e.getActionCommand() == "Click"){
             numClicks++;
             text.setText("Button Clicked " + numClicks+ " times");
@@ -164,7 +170,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
             error.setText("");
         }
         else if(e.getActionCommand() == "Level 1 Clicker" && numClicks < costC){
-            error.setText("You need "+costC+" clicks to buy this");
+            error.setText("You need "+df.format(costC)+" clicks to buy this");
         }
         else if(e.getActionCommand() == "Level 2 Clicker" && numClicks >= costD){
             numClicks = numClicks - costD;
@@ -174,7 +180,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
             error.setText("");
         }
         else if(e.getActionCommand() == "Level 2 Clicker" && numClicks < costD){
-            error.setText("You need "+costD+" clicks to buy this");
+            error.setText("You need "+df.format(costD)+" clicks to buy this");
         }
         else if(e.getActionCommand() == "Level 3 Clicker" && numClicks >= costE){
             numClicks = numClicks - costE;
@@ -184,7 +190,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
             error.setText("");
         }
         else if(e.getActionCommand() == "Level 3 Clicker" && numClicks < costE){
-            error.setText("You need "+costE+" clicks to buy this");
+            error.setText("You need "+df.format(costE)+" clicks to buy this");
         }
         else if(e.getActionCommand() == "Level 4 Clicker" && numClicks >= costF){
             numClicks = numClicks - costF;
@@ -194,7 +200,7 @@ public class Game extends Frame implements WindowListener,ActionListener{
             error.setText("");
         }
         else if(e.getActionCommand() == "Level 4 Clicker" && numClicks < costF){
-            error.setText("You need "+costF+" clicks to buy this");
+            error.setText("You need "+df.format(costF)+" clicks to buy this");
         }
     }
 
